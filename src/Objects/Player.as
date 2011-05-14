@@ -50,7 +50,7 @@ package Objects
 		public var start:Point;
 		
 		//timer for shoot
-		private var rate_of_fire:Number = 1.5;
+		private var rate_of_fire:Number = 0.5;
 		private var rof_timer:Number = 0;
 			
 		public function Player(x:int, y:int) 
@@ -198,6 +198,7 @@ package Objects
 				}
 			}
 			//shoot
+			// Added a timer on shoots
 			rof_timer -= FP.elapsed;
 			
 			if (Global.ShootGot)
