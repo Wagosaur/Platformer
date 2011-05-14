@@ -3,6 +3,7 @@ package Control
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.utils.ByteArray;
+	import flash.system.Capabilities;
 	import Assets;
 	import Global;
 	import net.flashpunk.Sfx;
@@ -14,18 +15,23 @@ package Control
 	import net.flashpunk.utils.Input;
 	
 	import org.flashdevelop.utils.FlashViewer;
+	import flash.events.*;
 	
 	import Objects.*;
 	import Solids.*;
+	
+	import neoart.flod.*;
+	
 	/**
 	 * ...
 	 * @author Noel Berry
 	 */
 	public class Game extends World
 	{
-		[Embed(source = '../../assets/Sounds/Pinball Spring.mp3')] public static const MUSIC:Class;
-		public static var music:Sfx;
-		
+		[Embed(source = '../../assets/Sounds/180_degrees_dsx_trsi.mod', mimeType = 'application/octet-stream')] private var SONG1:Class;
+		[Embed(source = '../../assets/Sounds/banja_dsx_trsi.mod', mimeType = 'application/octet-stream')] private var SONG2:Class;
+		private var stream:ByteArray;
+		private var processor:ModProcessor;
 		
 		public var tileset:Tilemap;
 		
@@ -34,13 +40,15 @@ package Control
 		
 		override public function begin():void
 		{
-			music = new Sfx(MUSIC)
+			/*music = new Sfx(MUSIC)
 			music.volume = 0.5;
 			music.loop();
 			if (Input.check(Global.keyP))
 			{
 			}
-	
+			*/
+			playSong();
+			
 			//enable the console
 			FP.console.enable();
 			
@@ -49,6 +57,7 @@ package Control
 			
 			//load next level
 			nextlevel();
+			
 		}
 		
 		override public function update():void 
@@ -183,6 +192,90 @@ package Control
 			//increase deaths
 			Global.deaths ++;
 		}
+		
+		private function playSong():void
+		{
+			//	1) First we get the module into a ByteArray
+			
+			stream = new SONG1() as ByteArray;
+			
+			//	2) Create the ModProcessor which will play the song
+			
+			processor = new ModProcessor();
+			
+			//	3) Load the song (now converted into a ByteArray) into the ModProcessor
+			//	This returns true on success, meaing the module was parsed successfully
+			
+			if (processor.load(stream))
+			{
+				//	Will the song loop at the end? (boolean)
+				processor.loopSong = true;
+				
+				//	4) Play it!
+				processor.play();
+			}
+		}
+		/*private function keyPress(event:KeyboardEvent):void
+		{
+			switch (event.keyCode)
+			{
+				//	1 - Play module 1
+				case 49:
+					processor.stop();
+				
+					stream = new SONG1() as ByteArray;
+					
+					if (processor.load(stream))
+					{
+						processor.loopSong = true;
+						processor.play(sound);
+					}
+					break;
+					
+				//	2 - Play module 2
+				case 50:
+					processor.stop();
+					
+					stream = new SONG2() as ByteArray;
+					
+					if (processor.load(stream))
+					{
+						processor.loopSong = true;
+						processor.play(sound);
+					}
+					break;
+				
+				//	M - Pause or Resume the playback
+				case 77:
+					if (processor.isPlaying)
+					{
+						processor.pause();
+					}
+					else
+					{
+						processor.play(sound);
+					}
+					break;
+				
+				//	Stereo Separation
+				
+				//	Left - Adjust the stereo separation
+				case 37:
+					if (processor.stereo > 0)
+					{
+						processor.stereo -= 0.10;
+					}
+					break;
+					
+				//	Right
+				case 39:
+					if (processor.stereo < 1)
+					{
+						processor.stereo += 0.10;
+					}
+					break;
+			}
+		}*/
 		
 	}
 
