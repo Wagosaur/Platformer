@@ -9,15 +9,9 @@ package
 	{
 		
 		//Embed the levels
-		[Embed(source = '../assets/levels/Level1.oel', mimeType = 'application/octet-stream')]public static const LEVEL1:Class;
-		[Embed(source = '../assets/levels/Level2.oel', mimeType = 'application/octet-stream')]public static const LEVEL2:Class;
-		[Embed(source = '../assets/levels/Level3.oel', mimeType = 'application/octet-stream')]public static const LEVEL3:Class;
-		[Embed(source = '../assets/levels/NewLevel.oel', mimeType = 'application/octet-stream')] public static const TESTLEVEL:Class;
 		[Embed(source = '../assets/levels/Tutorial level.oel', mimeType = 'application/octet-stream')]public static const TUTLEVEL:Class;
 		
 		public static const LEVELS:Array = new Array(TUTLEVEL);
-		
-		[Embed(source = '../assets/graphics/paused.png')] public static const PAUSED:Class;
 													 
 		//tilesets      
 		[Embed(source = '../assets/graphics/tileset.png')]public static const TILESET:Class;
@@ -34,6 +28,7 @@ package
 		
 		//objects
 		[Embed(source = '../assets/graphics/crate.png')] public static const OBJECT_CRATE:Class;
+		[Embed(source = '../assets/graphics/doublejump.png')] public static const OBJECT_DOUBLEJUMP:Class;
 		[Embed(source = '../assets/graphics/door.png')] public static const OBJECT_DOOR:Class;
 		[Embed(source = '../assets/graphics/electricity.png')] public static const OBJECT_ELECTRICITY:Class;
 		[Embed(source = '../assets/graphics/moving.png')] public static const OBJECT_MOVING:Class;

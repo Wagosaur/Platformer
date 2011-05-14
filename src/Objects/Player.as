@@ -11,11 +11,13 @@ package Objects
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import net.flashpunk.Sfx;
+	import Object;
 	
 	/**
 	 * ...
 	 * @author Wago
 	 * Based on Noel Barry's Advanced Platform Engine
+	 * 
 	 */
 	public class Player extends Physics
 	{
@@ -92,6 +94,13 @@ package Objects
 				sprite.alpha += 0.1 
 			}
 			
+			var j:Doublejump = collide("pickup", x, y) as Doublejump;
+			
+			if (j)
+			{
+				j.destroy();
+			}
+			
 			//are we on the ground?
 			onground = false;
 			if (collide(solid, x, y + 1)) 
@@ -118,7 +127,7 @@ package Objects
 				
 				if (!onground)
 				{
-					if (doublejump)
+					if (doublejump && Global.Pickedup)
 					{
 						snd_jump2.play();
 					}
@@ -151,13 +160,17 @@ package Objects
 				}
 				
 				//set double jump to false
-				if (!onground && !jumped && doublejump) { 
-					speed.y = -jump;
-					doublejump = false;
-					//set walljumping to 0 so we can move back in any direction again
-					//incase we were wall jumping prior to this double jump.
-					//if you don't want to allow walljumping after a double jump, set this to 3.
-					walljumping = 0;
+				if (!onground && !jumped && doublejump) 
+				{
+					if (Global.Pickedup)
+					{
+						speed.y = -jump;
+						doublejump = false;
+						//set walljumping to 0 so we can move back in any direction again
+						//incase we were wall jumping prior to this double jump.
+						//if you don't want to allow walljumping after a double jump, set this to 3.
+						walljumping = 0;
+					}
 				} 
 			}
 			

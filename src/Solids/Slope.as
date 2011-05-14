@@ -9,7 +9,9 @@ package Solids
 	import Assets;
 	/**
 	 * ...
-	 * @author Noel Berry
+	 * @author Wago
+	 * Based on Noel Barry's Advanced Platform Engine
+	 * 
 	 */
 	public class Slope extends Solid
 	{

@@ -6,7 +6,9 @@ package Objects
 	import Assets;
 	/**
 	 * ...
-	 * @author Noel Berry
+	 * @author Wago
+	 * Based on Noel Barry's Advanced Platform Engine
+	 * 
 	 */
 	public class Spikes extends Entity
 	{

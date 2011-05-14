@@ -14,6 +14,10 @@ package Control
 	import Assets;
 	import Global;
 	/*
+	 * ...
+	 * @author Wago
+	 * Based on Noel Barry's Advanced Platform Engine
+	 * 
 	 * The main menu of the game. We use this to load a new game, continue an old one,
 	 * or to check out the options
 	 */

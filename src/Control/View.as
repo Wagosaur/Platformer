@@ -8,6 +8,7 @@ package Control
 	 * ...
 	 * @author Wago
 	 * Based on Noel Barry's Advanced Platform Engine
+	 * 
 	 */
 	public class View extends Entity
 	{

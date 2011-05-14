@@ -3,7 +3,9 @@ package Solids
 	import net.flashpunk.Entity;
 	/**
 	 * ...
-	 * @author Noel Berry
+	 * @author Wago
+	 * Based on Noel Barry's Advanced Platform Engine
+	 * 
 	 */
 	public class Solid extends Entity
 	{

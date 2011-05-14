@@ -8,6 +8,7 @@ package Objects
 	 * ...
 	 * @author Wago
 	 * Based on Noel Barry's Advanced Platform Engine
+	 * 
 	 */
 	public class Physics extends Entity
 	{

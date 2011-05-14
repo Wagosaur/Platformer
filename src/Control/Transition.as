@@ -5,7 +5,12 @@ package Control
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.utils.Draw;
 	import net.flashpunk.World;
-	
+	/**
+	 * ...
+	 * @author Wago
+	 * Based on Noel Barry's Advanced Platform Engine
+	 * 
+	 */	
 	public class Transition extends World
 	{
 		//the screen (to display)

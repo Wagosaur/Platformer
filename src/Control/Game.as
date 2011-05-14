@@ -146,6 +146,9 @@ package Control
 			//place a sign
 			for each (o in xml.objects[0].sign) { add(new Sign(o.@x, o.@y)); }
 			
+			//place jump pickups
+			for each (o in xml.objects[0].doublejump) { add(new Doublejump(o.@x, o.@y)); }
+			
 			//place electricity
 			for each (o in xml.objects[0].electricity) {
 				var p:Point;

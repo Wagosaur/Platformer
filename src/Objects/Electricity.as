@@ -10,7 +10,9 @@ package Objects
 	import Global;
 	/**
 	 * ...
-	 * @author Noel Berry
+	 * @author Wago
+	 * Based on Noel Barry's Advanced Platform Engine
+	 * 
 	 */
 	public class Electricity extends Entity
 	{

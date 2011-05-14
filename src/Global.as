@@ -12,7 +12,6 @@ package
 	 * @author Wago
 	 * Based on Noel Barry's Advanced Platform Engine
 	 * 
-	 * This class contains a numver of global variables to be used throughout the game
 	 */
 	
 	public class Global 
@@ -39,6 +38,8 @@ package
 			
 			player:Player,
 			view:View,
+			
+			Pickedup:Boolean = false,
 			
 			paused:Boolean = false,
 			restart:Boolean = false,
