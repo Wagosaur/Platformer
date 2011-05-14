@@ -6,21 +6,22 @@ package Control
 	import flash.system.Capabilities;
 	import Assets;
 	import Global;
+	import neoart.flectrum.SoundEx;
 	import net.flashpunk.Sfx;
 	
-	import net.flashpunk.Entity;
-	import net.flashpunk.FP;
-	import net.flashpunk.World;
+	import net.flashpunk.*;
 	import net.flashpunk.graphics.Tilemap;
 	import net.flashpunk.utils.Input;
 	
-	import org.flashdevelop.utils.FlashViewer;
+	//import org.flashdevelop.utils.FlashViewer;
 	import flash.events.*;
 	
 	import Objects.*;
 	import Solids.*;
 	
 	import neoart.flod.*;
+	import neoart.flectrum.*;
+
 	
 	/**
 	 * ...
@@ -32,6 +33,7 @@ package Control
 		[Embed(source = '../../assets/Sounds/banja_dsx_trsi.mod', mimeType = 'application/octet-stream')] private var SONG2:Class;
 		private var stream:ByteArray;
 		private var processor:ModProcessor;
+		private var sound:SoundEx
 		
 		public var tileset:Tilemap;
 		
@@ -40,14 +42,10 @@ package Control
 		
 		override public function begin():void
 		{
-			/*music = new Sfx(MUSIC)
-			music.volume = 0.5;
-			music.loop();
-			if (Input.check(Global.keyP))
-			{
-			}
-			*/
+
 			playSong();
+			
+			FP.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyPress, false, 0, true);
 			
 			//enable the console
 			FP.console.enable();
@@ -154,6 +152,9 @@ package Control
 			for each (o in xml.objects[0].shoot) { add(new Shoot(o.@x, o.@y)); }
 			for each (o in xml.objects[0].walljump) { add(new Walljump(o.@x, o.@y)); }
 			
+			//Enemys
+			for each (o in xml.objects[0].skull) { add(new Skull(o.@x, o.@y)); }
+			
 			//place electricity
 			for each (o in xml.objects[0].electricity) {
 				var p:Point;
@@ -180,7 +181,9 @@ package Control
 		public function nextlevel():void
 		{
 			removeAll();
-			
+			Global.DoublejumpGot = false;
+			Global.ShootGot = false;
+			Global.WalljumpGot = false;
 			if(Global.level < Assets.LEVELS.length) { Global.level ++; }
 			Global.finished = false;
 			
@@ -222,37 +225,14 @@ package Control
 				//	4) Play it!
 				processor.play();
 			}
+			
+			sound = new SoundEx();
 		}
-		/*private function keyPress(event:KeyboardEvent):void
+		
+		private function keyPress(event:KeyboardEvent):void
 		{
 			switch (event.keyCode)
 			{
-				//	1 - Play module 1
-				case 49:
-					processor.stop();
-				
-					stream = new SONG1() as ByteArray;
-					
-					if (processor.load(stream))
-					{
-						processor.loopSong = true;
-						processor.play(sound);
-					}
-					break;
-					
-				//	2 - Play module 2
-				case 50:
-					processor.stop();
-					
-					stream = new SONG2() as ByteArray;
-					
-					if (processor.load(stream))
-					{
-						processor.loopSong = true;
-						processor.play(sound);
-					}
-					break;
-				
 				//	M - Pause or Resume the playback
 				case 77:
 					if (processor.isPlaying)
@@ -264,26 +244,8 @@ package Control
 						processor.play(sound);
 					}
 					break;
-				
-				//	Stereo Separation
-				
-				//	Left - Adjust the stereo separation
-				case 37:
-					if (processor.stereo > 0)
-					{
-						processor.stereo -= 0.10;
-					}
-					break;
-					
-				//	Right
-				case 39:
-					if (processor.stereo < 1)
-					{
-						processor.stereo += 0.10;
-					}
-					break;
 			}
-		}*/
+		}
 		
 	}
 

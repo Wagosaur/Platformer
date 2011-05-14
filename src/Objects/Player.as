@@ -23,12 +23,11 @@ package Objects
 	{
 		
 		//sounds
-		[Embed(source='../../assets/Sounds/Death.mp3')] public static const DEATH:Class;
-		[Embed(source = '../../assets/Sounds/Jump.mp3')] public static const JUMP:Class;
-		[Embed(source = '../../assets/Sounds/Jump2.mp3')] public static const JUMP2:Class;
-		public static var snd_death:Sfx = new Sfx(DEATH);
-		public static var snd_jump:Sfx = new Sfx(JUMP);
-		public static var snd_jump2:Sfx = new Sfx(JUMP2);
+		public static var snd_death:Sfx = new Sfx(Assets.SND_DEATH);
+		public static var snd_jump:Sfx = new Sfx(Assets.SND_JUMP);
+		public static var snd_jump2:Sfx = new Sfx(Assets.SND_JUMP2);
+		public static var snd_shoot:Sfx = new Sfx(Assets.SND_SHOOT);
+		public static var snd_powerup:Sfx = new Sfx(Assets.SND_POWERUP);
 		
 		public var sprite:Spritemap = new Spritemap(Assets.PLAYER, 32, 32, animEnd);
 		
@@ -50,6 +49,9 @@ package Objects
 		public var dead:Boolean = false;
 		public var start:Point;
 		
+		//timer for shoot
+		public var reset:int = 60;
+			
 		public function Player(x:int, y:int) 
 		{
 			//set position
@@ -93,29 +95,30 @@ package Objects
 			{ 
 				sprite.alpha += 0.1 
 			}
-			
+			//Did we get a powerup?
 			var j:Doublejump = collide("pickup", x, y) as Doublejump;
-			
-			if (j)
-			{
-				j.destroy();
-				Global.DoublejumpGot = true;
-			}
-			
 			var s:Shoot = collide("pickup", x, y) as Shoot;
-			
-			if (s)
-			{
-				s.destroy();
-				Global.ShootGot = true;
-			}
-						
 			var w:Walljump = collide("pickup", x, y) as Walljump
+
+			if (j){ j.destroy();
+				Global.DoublejumpGot = true;
+				snd_powerup.play();
+			}
 			
-			if (w)
-			{
-				w.destroy();
+			if (s){ s.destroy();
+				Global.ShootGot = true;
+				snd_powerup.play();
+			}
+			
+			if (w){ w.destroy();
 				Global.WalljumpGot = true;
+				snd_powerup.play();
+			}
+
+			
+			if (collide("enemy", x, y))
+			{
+				killme();
 			}
 			
 			//are we on the ground?
@@ -193,24 +196,27 @@ package Objects
 					} 
 				}
 			}
-			
-			if (Global.ShootGot)
-			{
-				if (Input.pressed(Global.keyB))
-				{
-					var bullet:Bullet = new Bullet(x, y);
-					if (speed.x > 0 || direction)
+					if (Global.ShootGot)
 					{
-						bullet.x += 36;
-					}
-					if (speed.x < 0 || !direction)
-					{
-						bullet.x -= 8;
-						bullet.movement = -8;
-					}
-					FP.world.add(bullet);
+						
+						if (Input.pressed(Global.keyB))
+						{
+							snd_shoot.play();
+							
+							var bullet:Bullet = new Bullet(x, y+15);
+							if (speed.x > 0 || direction)
+							{
+								bullet.x += 36;
+							}
+							if (speed.x < 0 || !direction)
+							{
+								bullet.x -= 8;
+								bullet.movement = -8;
+							}
+							FP.world.add(bullet);
+						}
+					
 				}
-			}
 			
 			//REMOVED AS OF V0.90 - Felt bad with this in here
 			//if we ARE walljumping, make sure we can't go back

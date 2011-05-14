@@ -27,7 +27,7 @@ package Objects
 			speed.x = movement;
 			motion(true, false);
 			
-		if (collide("Solid", x-1, y) || collide("Solid", x+1, y))
+			if (collide("Solid", x-1, y) || collide("Solid", x+1, y))
 			{
 				FP.world.remove(this);
 			}
@@ -36,8 +36,18 @@ package Objects
 			{
 				FP.world.remove(this);
 			}
+			if (collide("enemy", x, y))
+			{
+				FP.world.remove(this);
+			}
 			
 		}
+			public function destroy():void
+			{
+				// Here we could place specific destroy-behavior for the Bullet.
+				FP.world.remove(this);
+			}
+
 		
 	}
 

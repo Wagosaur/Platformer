@@ -36,6 +36,7 @@ package
 			keyB:int = Key.Z,
 			keyP:int = Key.P,
 			keyC:int = Key.C,
+			keyM:int = Key.M,
 			
 			player:Player,
 			view:View,

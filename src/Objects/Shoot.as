@@ -34,7 +34,7 @@ package Objects
 		{
 			// Here we could place specific destroy-behavior for the Bullet.
 			FP.world.remove(this);
-			Global.DoublejumpGot = true;
+			Global.ShootGot = true;
 		}
 		
 	}
