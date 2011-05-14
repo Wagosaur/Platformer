@@ -99,6 +99,23 @@ package Objects
 			if (j)
 			{
 				j.destroy();
+				Global.DoublejumpGot = true;
+			}
+			
+			var s:Shoot = collide("pickup", x, y) as Shoot;
+			
+			if (s)
+			{
+				s.destroy();
+				Global.ShootGot = true;
+			}
+						
+			var w:Walljump = collide("pickup", x, y) as Walljump
+			
+			if (w)
+			{
+				w.destroy();
+				Global.WalljumpGot = true;
 			}
 			
 			//are we on the ground?
@@ -127,7 +144,7 @@ package Objects
 				
 				if (!onground)
 				{
-					if (doublejump && Global.Pickedup)
+					if (doublejump && Global.DoublejumpGot)
 					{
 						snd_jump2.play();
 					}
@@ -143,35 +160,56 @@ package Objects
 				}
 				
 				//wall jump
-				if (collide(solid, x - 1, y) && !jumped && walljumping != 3) 
-				{ 
-					speed.y = -jump;			//jump up
-					speed.x = mMaxspeed.x * 2;	//move right fast
-					walljumping = 2;			//and set wall jump direction
-					jumped = true;				//so we don't "use up" or double jump
-				}
-				//same as above
-				if (collide(solid, x + 1, y) && !jumped && walljumping != 3) 
-				{ 
-					speed.y = -jump; 
-					speed.x = - mMaxspeed.x * 2;
-					walljumping = 1;
-					jumped = true;
+				if (Global.WalljumpGot)
+				{
+					if (collide(solid, x - 1, y) && !jumped && walljumping != 3) 
+					{ 
+						speed.y = -jump;			//jump up
+						speed.x = mMaxspeed.x * 2;	//move right fast
+						walljumping = 2;			//and set wall jump direction
+						jumped = true;				//so we don't "use up" or double jump
+					}
+					//same as above
+					if (collide(solid, x + 1, y) && !jumped && walljumping != 3) 
+					{ 
+						speed.y = -jump; 
+						speed.x = - mMaxspeed.x * 2;
+						walljumping = 1;
+						jumped = true;
+					}
 				}
 				
 				//set double jump to false
-				if (!onground && !jumped && doublejump) 
+				if (Global.DoublejumpGot)
 				{
-					if (Global.Pickedup)
+				if (!onground && !jumped && doublejump) 
 					{
-						speed.y = -jump;
-						doublejump = false;
-						//set walljumping to 0 so we can move back in any direction again
-						//incase we were wall jumping prior to this double jump.
-						//if you don't want to allow walljumping after a double jump, set this to 3.
-						walljumping = 0;
+							speed.y = -jump;
+							doublejump = false;
+							//set walljumping to 0 so we can move back in any direction again
+							//incase we were wall jumping prior to this double jump.
+							//if you don't want to allow walljumping after a double jump, set this to 3.
+							walljumping = 0;
+					} 
+				}
+			}
+			
+			if (Global.ShootGot)
+			{
+				if (Input.pressed(Global.keyB))
+				{
+					var bullet:Bullet = new Bullet(x, y);
+					if (speed.x > 0 || direction)
+					{
+						bullet.x += 36;
 					}
-				} 
+					if (speed.x < 0 || !direction)
+					{
+						bullet.x -= 8;
+						bullet.movement = -8;
+					}
+					FP.world.add(bullet);
+				}
 			}
 			
 			//REMOVED AS OF V0.90 - Felt bad with this in here
@@ -202,10 +240,13 @@ package Objects
 				if (speed.x < 0) { sprite.play("walkLeft"); }
 				if (speed.x > 0) { sprite.play("walkRight"); }
 				
-				if (speed.x == 0) {
+				if (speed.x == 0) 
+				{
 					if (direction) { sprite.play("standRight"); } else { sprite.play("standLeft"); }
 				}
-			} else {
+			} 
+			else
+			{
 				if (direction) { sprite.play("jumpRight"); } else { sprite.play("jumpLeft"); }
 				
 				//are we sliding on a wall?
@@ -233,7 +274,10 @@ package Objects
 			Global.restart = true;
 		}
 		
-		public function animEnd():void { }
+		public function animEnd():void 
+		{ 
+			
+		}
 		
 	}
 

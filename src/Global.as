@@ -35,11 +35,14 @@ package
 			keyA:int = Key.X,
 			keyB:int = Key.Z,
 			keyP:int = Key.P,
+			keyC:int = Key.C,
 			
 			player:Player,
 			view:View,
 			
-			Pickedup:Boolean = false,
+			DoublejumpGot:Boolean = false,
+			ShootGot:Boolean = false,
+			WalljumpGot:Boolean = false,
 			
 			paused:Boolean = false,
 			restart:Boolean = false,

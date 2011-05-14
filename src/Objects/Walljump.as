@@ -14,11 +14,11 @@ package Objects
 	 * Based on Noel Barry's Advanced Platform Engine
 	 * 
 	 */
-	public class Doublejump extends Entity
+	public class Walljump extends Entity
 	{
-		public var sprite:Image = new Image(Assets.OBJECT_DOUBLEJUMP);
+		public var sprite:Image = new Image(Assets.OBJECT_WALLJUMP);
 		
-		public function Doublejump(x:int, y:int) 
+		public function Walljump(x:int, y:int) 
 		{
 			super(x, y);
 			
@@ -41,7 +41,7 @@ package Objects
 		{
 			// Here we could place specific destroy-behavior for the Bullet.
 			FP.world.remove(this);
-			Global.DoublejumpGot = true;
+			Global.WalljumpGot = true;
 		}
 	}
 }

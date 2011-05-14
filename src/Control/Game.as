@@ -78,6 +78,9 @@ package Control
 					Global.restart = false;
 					//reset our timer
 					reset = 60;
+					Global.DoublejumpGot = false;
+					Global.ShootGot = false;
+					Global.WalljumpGot = false;
 				}
 			}
 			
@@ -146,8 +149,10 @@ package Control
 			//place a sign
 			for each (o in xml.objects[0].sign) { add(new Sign(o.@x, o.@y)); }
 			
-			//place jump pickups
+			//pickups
 			for each (o in xml.objects[0].doublejump) { add(new Doublejump(o.@x, o.@y)); }
+			for each (o in xml.objects[0].shoot) { add(new Shoot(o.@x, o.@y)); }
+			for each (o in xml.objects[0].walljump) { add(new Walljump(o.@x, o.@y)); }
 			
 			//place electricity
 			for each (o in xml.objects[0].electricity) {

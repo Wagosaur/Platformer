@@ -1,24 +1,18 @@
 package Objects 
 {
-	import flash.geom.Rectangle;
-	import net.flashpunk.*;
+	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
-	import net.flashpunk.graphics.Text;
-	import net.flashpunk.utils.Input;
-	import Assets;
-	import Control.Game;
-	import Global;
+	import net.flashpunk.FP
 	/**
 	 * ...
 	 * @author Wago
-	 * Based on Noel Barry's Advanced Platform Engine
-	 * 
 	 */
-	public class Doublejump extends Entity
+	public class Bow extends Entity
 	{
-		public var sprite:Image = new Image(Assets.OBJECT_DOUBLEJUMP);
 		
-		public function Doublejump(x:int, y:int) 
+		public var sprite:Image = new Image(Assets.OBJECT_BOW);
+		
+		public function Bow(x:int, y:int) 
 		{
 			super(x, y);
 			
@@ -34,14 +28,15 @@ package Objects
 			//set type
 			type = "pickup";
 			
-			//if we collide with the player...
 		}
 		
 		public function destroy():void
 		{
 			// Here we could place specific destroy-behavior for the Bullet.
 			FP.world.remove(this);
-			Global.DoublejumpGot = true;
+			Global.BowGot = true;
 		}
+		
 	}
+
 }

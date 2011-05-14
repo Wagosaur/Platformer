@@ -1,5 +1,6 @@
 package  
 {
+	import Objects.Shoot;
 	/**
 	 * ...
 	 * @author Wago
@@ -34,6 +35,11 @@ package
 		[Embed(source = '../assets/graphics/moving.png')] public static const OBJECT_MOVING:Class;
 		[Embed(source = '../assets/graphics/spikes.png')] public static const OBJECT_SPIKE:Class;
 		[Embed(source = '../assets/graphics/Sign.png')] public static const OBJECT_SIGN:Class;
+		[Embed(source = '../assets/graphics/shoot.png')] public static const OBJECT_SHOOT:Class;
+		[Embed(source = '../assets/graphics/bullet.png')] public static const OBJECT_BULLET:Class;
+		[Embed(source = '../assets/graphics/Walljump.png')] public static const OBJECT_WALLJUMP:Class;
+		[Embed(source = '../assets/graphics/Bow.png')] public static const OBJECT_BOW:Class;
+		
 		
 		//player
 		[Embed(source = '../assets/graphics/player.png')] public static const PLAYER:Class;
