@@ -50,7 +50,8 @@ package Objects
 		public var start:Point;
 		
 		//timer for shoot
-		public var reset:int = 60;
+		private var rate_of_fire:Number = 1.5;
+		private var rof_timer:Number = 0;
 			
 		public function Player(x:int, y:int) 
 		{
@@ -196,27 +197,33 @@ package Objects
 					} 
 				}
 			}
-					if (Global.ShootGot)
+			//shoot
+			rof_timer -= FP.elapsed;
+			
+			if (Global.ShootGot)
+			{
+				
+				if (Input.pressed(Global.keyB))
+				{
+					if (rof_timer < 0)
 					{
-						
-						if (Input.pressed(Global.keyB))
+						snd_shoot.play();
+						rof_timer = rate_of_fire;
+						var bullet:Bullet = new Bullet(x, y+15);
+						if (speed.x > 0 || direction)
 						{
-							snd_shoot.play();
-							
-							var bullet:Bullet = new Bullet(x, y+15);
-							if (speed.x > 0 || direction)
-							{
-								bullet.x += 36;
-							}
-							if (speed.x < 0 || !direction)
-							{
-								bullet.x -= 8;
-								bullet.movement = -8;
-							}
-							FP.world.add(bullet);
+							bullet.x += 36;
 						}
-					
+						if (speed.x < 0 || !direction)
+						{
+							bullet.x -= 8;
+							bullet.movement = -8;
+						}
+						FP.world.add(bullet);
+					}
 				}
+			
+			}
 			
 			//REMOVED AS OF V0.90 - Felt bad with this in here
 			//if we ARE walljumping, make sure we can't go back
