@@ -1,2 +1,17 @@
-MAKE BULLETS STICK TO WALL
-USE AS PLATFORMS
+MAKE BULLETS STICK TO WALL USE AS PLATFORMS
+Fire and buzz saws, make buzz saws follow nodes
+bouncy sticky surfaces
+animated,transforming enemys
+Timed levels
+Clean up code
+"Dynamic" signs
+art
+sounds
+more enemies
+elevators
+keys and locked doors
+
+
+/////////////////////BUGS///////////////////////
+No sound when walljumping after a double jump
+Background F'ed after last level reload

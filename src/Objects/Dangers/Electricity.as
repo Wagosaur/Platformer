@@ -1,4 +1,4 @@
-package Objects 
+package Objects.Dangers 
 {
 	import flash.geom.Point;
 	import net.flashpunk.Entity;

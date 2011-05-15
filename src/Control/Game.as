@@ -8,6 +8,9 @@ package Control
 	import Global;
 	import neoart.flectrum.SoundEx;
 	import net.flashpunk.Sfx;
+	import Objects.Dangers.*;
+	import Objects.Enemies.*;
+	import Objects.Pickups.*;
 	
 	import net.flashpunk.*;
 	import net.flashpunk.graphics.Tilemap;
@@ -146,7 +149,7 @@ package Control
 			for each (o in xml.objects[0].spikes) { add(new Spikes(o.@x, o.@y)); }
 			
 			//place a sign
-			for each (o in xml.objects[0].sign) { add(new Sign(o.@x, o.@y)); }
+			for each (o in xml.objects[0].sign) { add(new Sign(o.@x, o.@y, o.@string)); }
 			
 			//pickups
 			for each (o in xml.objects[0].doublejump) { add(new Doublejump(o.@x, o.@y)); }
@@ -155,6 +158,8 @@ package Control
 			
 			//Enemys
 			for each (o in xml.objects[0].steve) { add(new Steve(o.@x, o.@y)); }
+			for each (o in xml.objects[0].bob) { add(new Bob(o.@x, o.@y)); }
+			for each (o in xml.objects[0].flyingsteve) { add(new flyingSteve(o.@x, o.@y)); }
 			
 			//place electricity
 			for each (o in xml.objects[0].electricity) {

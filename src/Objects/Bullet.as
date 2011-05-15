@@ -3,6 +3,7 @@ package Objects
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.masks.Pixelmask
 	
 	/**
 	 * @author Wago
@@ -19,6 +20,7 @@ package Objects
 			
 			//graphic & hitbox
 			graphic = sprite;
+			mask = new Pixelmask(Assets.OBJECT_BULLET);
 			type = "Bullet";
 		}
 		

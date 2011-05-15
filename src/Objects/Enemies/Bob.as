@@ -1,4 +1,4 @@
-package Objects 
+package Objects.Enemies 
 {
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
@@ -6,27 +6,28 @@ package Objects
 	import net.flashpunk.FP
 	import Assets;
 	import Object;
+	import Objects.Physics;
 	/**
 	 * ...
 	 * @author Wago
 	 * Based on Noel Barry's Advanced Platform Engine
 	 * 
 	 */
-	public class Steve extends Physics
+	public class Bob extends Physics
 	{
-		public var sprite:Image = new Image(Assets.OBJECT_STEVE);
+		public var sprite:Image = new Image(Assets.OBJECT_BOB);
 		
 		public var direction:Boolean = FP.choose(true, false);
-		public var movement:Number = 2;
+		public var movement:Number = 4;
 		
-		public function Steve(x:int, y:int) 
+		public function Bob(x:int, y:int) 
 		{
 			//set position      
 			super(x, y);
 			
 			//set graphic and mask
 			graphic = sprite;
-			setHitbox(32, 32, 0, 0);
+			mask = new Pixelmask(Assets.OBJECT_BOB);
 			
 			//set type
 			type = "enemy";
@@ -38,6 +39,8 @@ package Objects
 			
 			//move ourselves
 			motion();
+			
+			gravity();
 			
 			//if we've stopped moving, switch directions!
 			if ( speed.x == 0 ) { direction = !direction; }

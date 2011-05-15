@@ -1,4 +1,4 @@
-package Objects 
+package Objects.Pickups 
 {
 	import flash.geom.Rectangle;
 	import net.flashpunk.*;

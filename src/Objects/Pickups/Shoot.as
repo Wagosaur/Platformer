@@ -1,4 +1,4 @@
-package Objects 
+package Objects.Pickups 
 {
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;

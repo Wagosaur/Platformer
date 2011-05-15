@@ -12,6 +12,9 @@ package Objects
 	import flash.display.MovieClip;
 	import net.flashpunk.Sfx;
 	import Object;
+	import Objects.Pickups.Doublejump;
+	import Objects.Pickups.Shoot;
+	import Objects.Pickups.Walljump;
 	
 	/**
 	 * ...

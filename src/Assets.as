@@ -1,6 +1,6 @@
 package  
 {
-	import Objects.Shoot;
+	import Objects.*;
 	/**
 	 * ...
 	 * @author Wago
@@ -14,9 +14,9 @@ package
 		[Embed(source = '../assets/levels/Level2.oel', mimeType = 'application/octet-stream')] public static const LEVEL2:Class;
 		[Embed(source = '../assets/levels/montimer.oel', mimeType = 'application/octet-stream')] public static const MONTY:Class;
 		
-		public static const LEVELS:Array = new Array(MONTY,
-													 LEVEL1,
-													 LEVEL2);
+		public static const LEVELS:Array = new Array(LEVEL1,
+													 LEVEL2,
+													 MONTY);
 													 
 		//background
 		[Embed(source = '../assets/graphics/background.png')]public static const BACKGROUND:Class;
@@ -55,7 +55,9 @@ package
 		[Embed(source = '../assets/graphics/Bow.png')] public static const OBJECT_BOW:Class;
 		
 		//enemys
-		[Embed(source='../assets/graphics/Steve.png')] public static const OBJECT_STEVE:Class;
+		[Embed(source = '../assets/graphics/Steve.png')] public static const OBJECT_STEVE:Class;
+		[Embed(source = '../assets/graphics/flyingSteve.png')] public static const OBJECT_FLYINGSTEVE:Class;
+		[Embed(source = '../assets/graphics/Bob.png')] public static const OBJECT_BOB:Class;
 		
 		
 		//player
