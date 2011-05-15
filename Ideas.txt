@@ -4,12 +4,12 @@ bouncy sticky surfaces
 animated,transforming enemys
 Timed levels
 Clean up code
-"Dynamic" signs
-art
+art //working on it
 sounds
-more enemies
+more enemies //working on it
 elevators
 keys and locked doors
+pause screen
 
 
 /////////////////////BUGS///////////////////////

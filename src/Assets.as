@@ -1,22 +1,28 @@
 package  
 {
 	import Objects.*;
+	import flash.utils.ByteArray
+	
+	import neoart.flod.*;
+	import neoart.flectrum.*;
 	/**
 	 * ...
 	 * @author Wago
 	 * Based on Noel Barry's Advanced Platform Engine
 	 */
 	public class Assets 
-	{
+	{ 
 		
-		//Embed the levels
+		//Embed the levels 
+		[Embed(source = '../assets/levels/Doublejump.oel', mimeType = 'application/octet-stream')] public static const DOUBLEJUMP:Class;
+		[Embed(source = '../assets/levels/Walljump.oel', mimeType = 'application/octet-stream')]public static const WALLJUMP:Class;
 		[Embed(source = '../assets/levels/Level1.oel', mimeType = 'application/octet-stream')] public static const LEVEL1:Class;
 		[Embed(source = '../assets/levels/Level2.oel', mimeType = 'application/octet-stream')] public static const LEVEL2:Class;
 		[Embed(source = '../assets/levels/montimer.oel', mimeType = 'application/octet-stream')] public static const MONTY:Class;
 		[Embed(source = '../assets/levels/Monty#2.oel', mimeType = 'application/octet-stream')] public static const MONTY2:Class;
 		[Embed(source = '../assets/levels/beginner1.oel', mimeType = 'application/octet-stream')] public static const BEGINNER1:Class;
 		
-		public static const LEVELS:Array = new Array(BEGINNER1, LEVEL1, LEVEL2, MONTY, MONTY2);
+		public static const LEVELS:Array = new Array(DOUBLEJUMP, WALLJUMP, BEGINNER1, LEVEL1, LEVEL2, MONTY, MONTY2 );
 													 
 		//background
 		[Embed(source = '../assets/graphics/background.png')]public static const BACKGROUND:Class;
@@ -30,6 +36,13 @@ package
 		[Embed(source = '../assets/Sounds/Jump2.mp3')] public static const SND_JUMP2:Class;
 		[Embed(source = '../assets/Sounds/Shoot.mp3')] public static const SND_SHOOT:Class;
 		[Embed(source = '../assets/Sounds/Powerup.mp3')] public static const SND_POWERUP:Class;
+		[Embed(source = '../assets/Sounds/banja_dsx_trsi.mod', mimeType = 'application/octet-stream')] public static const SONG1:Class;
+		[Embed(source = '../assets/Sounds/180_degrees_dsx_trsi.mod', mimeType = 'application/octet-stream')]public static const SONG2:Class;
+		
+		private var stream:ByteArray;
+		private var processor:ModProcessor;
+		private var sound:SoundEx
+		
 		//menu
 		
 		[Embed(source = '../assets/graphics/banner.png')]public static const MENU_BANNER:Class;

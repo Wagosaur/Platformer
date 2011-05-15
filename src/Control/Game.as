@@ -32,8 +32,6 @@ package Control
 	 */
 	public class Game extends World
 	{
-		[Embed(source = '../../assets/Sounds/180_degrees_dsx_trsi.mod', mimeType = 'application/octet-stream')] private var SONG1:Class;
-		[Embed(source = '../../assets/Sounds/banja_dsx_trsi.mod', mimeType = 'application/octet-stream')] private var SONG2:Class;
 		private var stream:ByteArray;
 		private var processor:ModProcessor;
 		private var sound:SoundEx
@@ -222,7 +220,7 @@ package Control
 		{
 			//	1) First we get the module into a ByteArray
 			
-			stream = new SONG1() as ByteArray;
+			stream = new Assets.SONG1() as ByteArray;
 			
 			//	2) Create the ModProcessor which will play the song
 			
@@ -237,7 +235,7 @@ package Control
 				processor.loopSong = true;
 				
 				//	4) Play it!
-				processor.play();
+				//processor.play();
 			}
 			
 			sound = new SoundEx();
