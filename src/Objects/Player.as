@@ -175,6 +175,7 @@ package Objects
 						speed.x = mMaxspeed.x * 2;	//move right fast
 						walljumping = 2;			//and set wall jump direction
 						jumped = true;				//so we don't "use up" or double jump
+						snd_jump2.play();
 					}
 					//same as above
 					if (collide(solid, x + 1, y) && !jumped && walljumping != 3) 
@@ -183,6 +184,7 @@ package Objects
 						speed.x = - mMaxspeed.x * 2;
 						walljumping = 1;
 						jumped = true;
+						snd_jump2.play();
 					}
 				}
 				
