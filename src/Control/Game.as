@@ -154,7 +154,7 @@ package Control
 			for each (o in xml.objects[0].walljump) { add(new Walljump(o.@x, o.@y)); }
 			
 			//Enemys
-			for each (o in xml.objects[0].skull) { add(new Skull(o.@x, o.@y)); }
+			for each (o in xml.objects[0].steve) { add(new Steve(o.@x, o.@y)); }
 			
 			//place electricity
 			for each (o in xml.objects[0].electricity) {

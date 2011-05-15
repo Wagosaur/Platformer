@@ -12,8 +12,10 @@ package
 		//Embed the levels
 		[Embed(source = '../assets/levels/Level1.oel', mimeType = 'application/octet-stream')] public static const LEVEL1:Class;
 		[Embed(source = '../assets/levels/Level2.oel', mimeType = 'application/octet-stream')] public static const LEVEL2:Class;
+		[Embed(source = '../assets/levels/montimer.oel', mimeType = 'application/octet-stream')] public static const MONTY:Class;
 		
-		public static const LEVELS:Array = new Array(LEVEL1,
+		public static const LEVELS:Array = new Array(MONTY,
+													 LEVEL1,
 													 LEVEL2);
 													 
 		//background
@@ -53,7 +55,7 @@ package
 		[Embed(source = '../assets/graphics/Bow.png')] public static const OBJECT_BOW:Class;
 		
 		//enemys
-		[Embed(source = '../assets/graphics/Enemy.png')] public static const OBJECT_SKULL:Class;
+		[Embed(source='../assets/graphics/Steve.png')] public static const OBJECT_STEVE:Class;
 		
 		
 		//player

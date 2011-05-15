@@ -12,14 +12,14 @@ package Objects
 	 * Based on Noel Barry's Advanced Platform Engine
 	 * 
 	 */
-	public class Skull extends Physics
+	public class Steve extends Physics
 	{
-		public var sprite:Image = new Image(Assets.OBJECT_SKULL);
+		public var sprite:Image = new Image(Assets.OBJECT_STEVE);
 		
 		public var direction:Boolean = FP.choose(true, false);
 		public var movement:Number = 2;
 		
-		public function Skull(x:int, y:int) 
+		public function Steve(x:int, y:int) 
 		{
 			//set position      
 			super(x, y);
