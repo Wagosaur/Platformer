@@ -16,6 +16,9 @@ package
 		public static const LEVELS:Array = new Array(LEVEL1,
 													 LEVEL2);
 													 
+		//background
+		[Embed(source = '../assets/graphics/background.png')]public static const BACKGROUND:Class;
+													 
 		//tilesets      
 		[Embed(source = '../assets/graphics/tileset.png')]public static const TILESET:Class;
 		

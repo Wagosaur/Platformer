@@ -79,6 +79,7 @@ package Control
 					Global.DoublejumpGot = false;
 					Global.ShootGot = false;
 					Global.WalljumpGot = false;
+					add(new Background);
 				}
 			}
 			
@@ -170,6 +171,8 @@ package Control
 						
 			//add the door!
 			for each (o in xml.objects[0].door) { add(new Door(o.@x, o.@y)); }
+			
+			add(new Background);
 		}
 		
 		
@@ -186,6 +189,7 @@ package Control
 			Global.WalljumpGot = false;
 			if(Global.level < Assets.LEVELS.length) { Global.level ++; }
 			Global.finished = false;
+			add(new Background);
 			
 			loadlevel();
 		}
@@ -199,6 +203,7 @@ package Control
 		{
 			removeAll();
 			loadlevel();
+			add(new Background);
 			
 			//increase deaths
 			Global.deaths ++;

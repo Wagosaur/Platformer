@@ -273,7 +273,7 @@ package Objects
 			motion();
 			
 			//did we just get.. KILLED? D:
-			if (collide("Spikes", x, y) && speed.y > 0)
+			if (collide("Spikes", x, y))
 			{
 				snd_death.play();
 				//killme!
