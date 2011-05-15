@@ -13,10 +13,10 @@ package
 		[Embed(source = '../assets/levels/Level1.oel', mimeType = 'application/octet-stream')] public static const LEVEL1:Class;
 		[Embed(source = '../assets/levels/Level2.oel', mimeType = 'application/octet-stream')] public static const LEVEL2:Class;
 		[Embed(source = '../assets/levels/montimer.oel', mimeType = 'application/octet-stream')] public static const MONTY:Class;
+		[Embed(source = '../assets/levels/Monty#2.oel', mimeType = 'application/octet-stream')] public static const MONTY2:Class;
+		[Embed(source = '../assets/levels/beginner1.oel', mimeType = 'application/octet-stream')] public static const BEGINNER1:Class;
 		
-		public static const LEVELS:Array = new Array(LEVEL1,
-													 LEVEL2,
-													 MONTY);
+		public static const LEVELS:Array = new Array(BEGINNER1, LEVEL1, LEVEL2, MONTY, MONTY2);
 													 
 		//background
 		[Embed(source = '../assets/graphics/background.png')]public static const BACKGROUND:Class;

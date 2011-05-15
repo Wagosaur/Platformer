@@ -18,7 +18,7 @@ package Objects
 	public class Sign extends Entity
 	{
 		
-		//public var text:Text = new Text("PICK UP THE SHOE FOR DOUBLEJUMP ABILITY!", -150, -100, 0, 0 );
+		public var text:Text = new Text("",0,0,0,0);
 		public var sprite:Image = new Image(Assets.OBJECT_SIGN, new Rectangle(0, 0, 32, 64));
 		public var sprite_hover:Image = new Image(Assets.OBJECT_SIGN, new Rectangle(0, 0, 32, 64));
 		
@@ -28,6 +28,7 @@ package Objects
 			graphic = sprite;
 			setHitbox(32, 32, 0, 0);
 			text = text;
+			this.text = new Text(text,-40,-40,0,0);
 		}
 		
 		override public function update():void
@@ -41,7 +42,7 @@ package Objects
 				
 				//set the sprite to the hover one
 				
-				//graphic = text;
+				graphic = text;
 				
 			}
 		}

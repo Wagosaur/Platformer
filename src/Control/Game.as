@@ -82,10 +82,16 @@ package Control
 					Global.DoublejumpGot = false;
 					Global.ShootGot = false;
 					Global.WalljumpGot = false;
-					add(new Background);
+					//add(new Background);
 				}
 			}
-			
+			if (Input.pressed(Global.keyR))
+			{
+				restartlevel();
+			}
+			if (Input.pressed(Global.keyN)) {
+				nextlevel();
+			}
 			
 			//load next level on level completion
 			if (Global.finished) {
@@ -118,7 +124,7 @@ package Control
 			//set the view to follow the player, within no restraints, and let it "stray" from the player a bit.
 			//for example, if the last parameter was 1, the view would be static with the player. If it was 10, then
 			//it would trail behind the player a bit. Higher the number, slower it follows.
-			add(Global.view = new View(Global.player as Entity, new Rectangle(0,0,FP.width,FP.height), 1));
+			add(Global.view = new View(Global.player as Entity, new Rectangle(0,0,FP.width,FP.height), 10));
 			
 			//add tiles
 			for each (o in xml.tilesAbove[0].tile) {
@@ -149,7 +155,7 @@ package Control
 			for each (o in xml.objects[0].spikes) { add(new Spikes(o.@x, o.@y)); }
 			
 			//place a sign
-			for each (o in xml.objects[0].sign) { add(new Sign(o.@x, o.@y, o.@string)); }
+			for each (o in xml.objects[0].sign) { add(new Sign(o.@x, o.@y, o.@text)); }
 			
 			//pickups
 			for each (o in xml.objects[0].doublejump) { add(new Doublejump(o.@x, o.@y)); }
@@ -171,13 +177,13 @@ package Control
 				}
 				
 				//add electricity to the world
-				add(new Electricity(o.@x, o.@y, p.x, p.y));
+			add(new Electricity(o.@x, o.@y, p.x, p.y));
 			}
 						
 			//add the door!
 			for each (o in xml.objects[0].door) { add(new Door(o.@x, o.@y)); }
 			
-			add(new Background);
+			//add(new Background);
 		}
 		
 		
@@ -194,7 +200,6 @@ package Control
 			Global.WalljumpGot = false;
 			if(Global.level < Assets.LEVELS.length) { Global.level ++; }
 			Global.finished = false;
-			add(new Background);
 			
 			loadlevel();
 		}
@@ -208,7 +213,6 @@ package Control
 		{
 			removeAll();
 			loadlevel();
-			add(new Background);
 			
 			//increase deaths
 			Global.deaths ++;

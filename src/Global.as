@@ -34,9 +34,10 @@ package
 			keyRight:int = Key.RIGHT,
 			keyA:int = Key.X,
 			keyB:int = Key.Z,
-			keyP:int = Key.P,
+			keyR:int = Key.R,
 			keyC:int = Key.C,
 			keyM:int = Key.M,
+			keyN:int = Key.N,
 			
 			player:Player,
 			view:View,

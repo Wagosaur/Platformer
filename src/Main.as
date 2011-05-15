@@ -5,7 +5,7 @@ package
 	import net.flashpunk.FP
 	import Control.Menu
 	
-	[SWF(width = "640", height = "400")]
+	[SWF(width = "640", height = "480")]
 	
 	/**
 	 * ...
@@ -19,7 +19,7 @@ package
 		public function Main():void
 		{
 			//init the game
-			super(640, 400, 60, true);	
+			super(640, 480, 60, true);	
 			//FP.screen.scale = 2;
 		}
 		
