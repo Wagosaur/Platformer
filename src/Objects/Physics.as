@@ -219,6 +219,41 @@ package Objects
 			}
 		}
 		
+		public function elevate(type:String,speed:Number):void
+		{
+			var e:Entity = collide(type, x, y - 1) as Entity;
+			if (e) {
+				motiony(e, speed);
+				
+				//if the player is on tope of the thing that's being moved, move him/her too.
+				var p:Physics = e as Physics;
+				if(p != null) { p.moveontop("Player", 1); }
+			}
+		}
+		
+		//public function conveyor1(type:String,speed:Number):void
+		//{
+			//var e:Entity = collide(type, x, y - 1) as Entity;
+			//if (e) {
+				//motionx(e, 3);
+				//
+				//var p:Physics = e as Physics;
+				//if(p != null) { p.moveontop("Player", speed); }
+			//}
+		//}
+		
+		public function conveyor2(type:String,speed:Number):void
+		{
+			var e:Entity = collide(type, x, y - 1) as Entity;
+			if (e) {
+				motionx(e, -3);
+				
+				//if the player is on tope of the thing that's being moved, move him/her too.
+				var p:Physics = e as Physics;
+				if(p != null) { p.moveontop("Player", speed); }
+			}
+		}
+		
 	}
 
 }

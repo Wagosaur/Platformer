@@ -10,22 +10,34 @@ package Objects
 	 * Based on Noel Barry's Advanced Platform Engine
 	 * 
 	 */
-	public class Elevator extends Physics
+	public class Conveyor extends Physics
 	{
-		public var sprite:Image = new Image(Assets.OBJECT_MOVING);
+		public var sprite:Image = new Image(Assets.PLATFORM_CONVEYOR);
+		
+		private var cSpeed:Number
 		
 		public var direction:Boolean = FP.choose(true, false);
 		public var movement:Number = 2;
 		public var carry:Array = new Array("Solid", "Player");
 		
-		public function Elevator(x:int, y:int) 
+		public function Conveyor(x:int, y:int, cSpeed:Number) 
 		{
 			//our x/y position
 			super(x, y);
-			
-			//graphic & hitbox
 			graphic = sprite;
 			setHitbox(64, 32);
+			this.cSpeed = new Number(cSpeed);
+			
+		}
+		public function conveyor(type:String,speed:Number):void
+		{
+			var e:Entity = collide(type, x, y - 1) as Entity;
+			if (e) {
+				motionx(e, cSpeed);
+				
+				var p:Physics = e as Physics;
+				if(p != null) { p.moveontop("Player", speed); }
+			}
 		}
 		
 		override public function update():void {
@@ -33,15 +45,10 @@ package Objects
 			//move in the correct direction
 			speed.y = direction ? movement : - movement;
 			
-			//move stuff that's on top of us, for each type of entity we can carry
-			for each(var i:String in carry) {
-				moveontop(i,speed.y);
+			for each (var i:String in carry) {
+				conveyor(i, speed.y);
 			}
 			
-			//move ourselves
-			motion();
-			
-			//if we've stopped moving, switch directions!
 			if ( speed.y == 0 ) { direction = !direction; }
 		}
 		

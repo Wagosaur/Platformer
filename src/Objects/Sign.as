@@ -27,7 +27,6 @@ package Objects
 			super(x, y);	
 			graphic = sprite;
 			setHitbox(32, 32, 0, 0);
-			text = text;
 			this.text = new Text(text,-40,-40,0,0);
 		}
 		

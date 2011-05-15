@@ -145,8 +145,10 @@ package Control
 			
 			//place a moving platform
 			for each (o in xml.objects[0].moving) { add(new Moving(o.@x, o.@y)); }
+			for each (o in xml.objects[0].elevator) { add(new Elevator(o.@x, o.@y)); }
+			for each (o in xml.objects[0].conveyor) { add(new Conveyor(o.@x, o.@y, o.@cSpeed)); }
 			
-			//place a moving platform
+			//place a spike
 			for each (o in xml.objects[0].spikes) { add(new Spikes(o.@x, o.@y)); }
 			
 			//place a sign

@@ -35,10 +35,10 @@ package Objects
 			
 			//move stuff that's on top of us, for each type of entity we can carry
 			for each(var i:String in carry) {
-				moveontop(i,speed.y);
+				elevate(i,speed.y);
 			}
 			
-			//move ourselves
+			//move
 			motion();
 			
 			//if we've stopped moving, switch directions!

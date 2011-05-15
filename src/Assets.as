@@ -66,6 +66,7 @@ package
 		[Embed(source = '../assets/graphics/bullet.png')] public static const OBJECT_BULLET:Class;
 		[Embed(source = '../assets/graphics/Walljump.png')] public static const OBJECT_WALLJUMP:Class;
 		[Embed(source = '../assets/graphics/Bow.png')] public static const OBJECT_BOW:Class;
+		[Embed(source = '../assets/graphics/Conveyor.png')] public static const PLATFORM_CONVEYOR:Class;
 		
 		//enemys
 		[Embed(source = '../assets/graphics/Steve.png')] public static const OBJECT_STEVE:Class;

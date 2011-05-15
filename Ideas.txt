@@ -10,8 +10,9 @@ more enemies //working on it
 elevators
 keys and locked doors
 pause screen
+revrsed gravity
 
 
 /////////////////////BUGS///////////////////////
-No sound when walljumping after a double jump
-Background F'ed after last level reload
+elevators
+Textsign posistion
