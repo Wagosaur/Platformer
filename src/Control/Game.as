@@ -76,10 +76,7 @@ package Control
 					//set restart to false
 					Global.restart = false;
 					//reset our timer
-					reset = 60;
-					Global.DoublejumpGot = false;
-					Global.ShootGot = false;
-					Global.WalljumpGot = false;
+					reset = 60
 					//add(new Background);
 				}
 			}
@@ -211,6 +208,9 @@ package Control
 		{
 			removeAll();
 			loadlevel();
+			Global.DoublejumpGot = false;
+			Global.ShootGot = false;
+			Global.WalljumpGot = false;
 			
 			//increase deaths
 			Global.deaths ++;
