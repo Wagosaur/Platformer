@@ -180,7 +180,7 @@ package Control
 			//add the door!
 			for each (o in xml.objects[0].door) { add(new Door(o.@x, o.@y)); }
 			
-			//add(new Background);
+			add(new Background);
 		}
 		
 		

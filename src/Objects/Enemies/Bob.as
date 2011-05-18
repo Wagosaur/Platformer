@@ -1,12 +1,18 @@
 package Objects.Enemies 
 {
-	import net.flashpunk.Entity;
-	import net.flashpunk.graphics.Image;
-	import net.flashpunk.masks.Pixelmask;
-	import net.flashpunk.FP
+	import flash.geom.Point
+	import net.flashpunk.Entity
+	import net.flashpunk.*;
+	import net.flashpunk.graphics.*;
+	import net.flashpunk.utils.*;
 	import Assets;
+	import Global;
+	import flash.display.Bitmap;
+	import flash.display.DisplayObject;
+	import flash.display.MovieClip;
 	import Object;
 	import Objects.Physics;
+	
 	/**
 	 * ...
 	 * @author Wago
@@ -15,10 +21,11 @@ package Objects.Enemies
 	 */
 	public class Bob extends Physics
 	{
-		public var sprite:Image = new Image(Assets.OBJECT_BOB);
+		public var sprite:Spritemap = new Spritemap(Assets.OBJECT_BOB, 32, 32, animEnd);
 		
 		public var direction:Boolean = FP.choose(true, false);
 		public var movement:Number = 4;
+		
 		
 		public function Bob(x:int, y:int) 
 		{
@@ -27,7 +34,15 @@ package Objects.Enemies
 			
 			//set graphic and mask
 			graphic = sprite;
-			mask = new Pixelmask(Assets.OBJECT_BOB);
+			setHitbox(32, 32, 0, 0);
+			
+			//set animation
+			//set up animations
+			sprite.add("standLeft", [0], 0, false);
+			sprite.add("standRight", [8], 0, false);
+			sprite.add("walkLeft", [0, 1, 2, 3, 4, 5, 6, 7], 0.2, true);
+			sprite.add("walkRight", [8, 9, 10, 11, 12, 13, 14, 15], 0.2, true);
+			sprite.play("standRight");
 			
 			//set type
 			type = "enemy";
@@ -36,6 +51,15 @@ package Objects.Enemies
 			
 			//move in the correct direction
 			speed.x = direction ? movement : - movement;
+			
+			//set up animations
+			if (speed.x < 0) { sprite.play("walkLeft"); }
+			if (speed.x > 0) { sprite.play("walkRight"); }
+			
+			if (speed.x == 0) 
+			{
+				if (direction) { sprite.play("standRight"); } else { sprite.play("standLeft"); }
+			}
 			
 			//move ourselves
 			motion();
@@ -49,6 +73,11 @@ package Objects.Enemies
 			{
 				FP.world.remove(this);
 			}
+		}
+		
+		public function animEnd():void 
+		{ 
+			
 		}
 
 		//public function destroy():void
