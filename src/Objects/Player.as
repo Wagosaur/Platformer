@@ -82,7 +82,7 @@ package Objects
 			sprite.play("standRight");
 			
 			//set hitbox & graphic
-			setHitbox(12, 24, -10, -8);
+			setHitbox(18,29,-7,-4);
 			graphic = sprite;
 			type = "Player";
 		}
